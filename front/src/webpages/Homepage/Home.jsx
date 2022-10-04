@@ -1,21 +1,14 @@
 import React from "react";
 import styles from "./Home.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Card from "../../components/shared/Card/Card";
 import Button from "../../components/shared/Button/Button";
 
 const Home = () => {
-  const linkStyle = {
-    color: "#0077ff",
-    fontWeight: "bold",
-    textDecoration: "none",
-    marginLeft: "5px",
-  };
-
   const history = useNavigate();
 
   function startRegister() {
-    history("/register");
+    history("/authenticate");
   }
 
   return (
@@ -28,13 +21,10 @@ const Home = () => {
           aliquid excepturi accusantium.
         </p>
         <div>
-          <Button onClick={startRegister} text="Get Username" />
+          <Button onClick={startRegister} text="Let's Begin 🙂" />
         </div>
         <div className={styles.signinInfo}>
           <span className={styles.inviteTxt}>Got an invite text?</span>
-          <Link style={linkStyle} to="/login">
-            Sign In
-          </Link>
         </div>
       </Card>
     </div>
