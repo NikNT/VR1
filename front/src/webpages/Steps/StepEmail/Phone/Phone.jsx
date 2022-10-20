@@ -4,7 +4,7 @@ import Button from "../../../../components/shared/Button/Button";
 import TextInput from "../../../../components/shared/TextInput/TextInput";
 import styles from "../StepEmail.module.css";
 
-const Phone = () => {
+const Phone = ({ onNext }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   return (
     <Card title="Enter Phone Number" icon="phone">
@@ -14,7 +14,7 @@ const Phone = () => {
       />
       <div>
         <div className={styles.actionButtonWrap}>
-          <Button text="Next" />
+          <Button text="Next" onClick={onNext} />
         </div>
         <p className={styles.bottomParagraph}>
           You'll recieve an OTP on your phone which you can use to easily log in
