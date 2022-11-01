@@ -1,10 +1,15 @@
 import React from "react";
 import styles from "./TextInput.module.css";
 
-const TextInput = ({ props }) => {
+const TextInput = ({ props, onChange }) => {
   return (
     <div>
-      <input type="text" className={styles.input} {...props} />
+      <input
+        type="text"
+        className={styles.input}
+        onChange={onChange}
+        {...props}
+      />
     </div>
   );
 };
