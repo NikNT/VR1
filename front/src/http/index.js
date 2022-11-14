@@ -8,14 +8,33 @@ const api = axios.create({
   },
 });
 
+// export const sendOtp = (data) => api.post('/api/send-otp', data);
+
 export const sendOtp = (data) =>
-  axios.post("http://localhost:5500/api/send-otp", data).then((res) => {
-    return res;
-  });
+  axios
+    .post("http://localhost:5500/api/send-otp", data, {
+      withCredentials: true,
+    })
+    .then((res) => {
+      return res;
+    });
 
 export const verifyOtp = (data) =>
-  axios.post("http://localhost:5500/api/verify-otp", data).then((res) => {
-    return res;
-  });
+  axios
+    .post("http://localhost:5500/api/verify-otp", data, {
+      withCredentials: true,
+    })
+    .then((res) => {
+      return res;
+    });
+
+export const activate = (data) =>
+  axios
+    .post("http://localhost:5500/api/activate", data, {
+      withCredentials: true,
+    })
+    .then((res) => {
+      return res;
+    });
 
 export default api;
