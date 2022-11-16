@@ -6,9 +6,14 @@ import Authenticate from "./webpages/Authenticate/Authenticate";
 import Activate from "./webpages/Activate/Activate";
 import Rooms from "./webpages/Rooms/Rooms";
 import { useSelector } from "react-redux";
+import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh";
+import Loader from "./components/shared/Loader/Loader";
 
 function App() {
-  return (
+  const { loading } = useLoadingWithRefresh();
+  return loading ? (
+    <Loader message="Loading, Please Wait" />
+  ) : (
     <BrowserRouter>
       <Navigation />
       <Routes>
