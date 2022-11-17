@@ -7,12 +7,14 @@ import { setAvatar } from "../../../store/activateSlice";
 import { activate } from "../../../http";
 import { setAuth } from "../../../store/authSlice";
 import Loader from "../../../components/shared/Loader/Loader";
+// import { useEffect } from "react";
 
 const StepProfileAvatar = ({ onNext }) => {
   const dispatch = useDispatch();
   const { name, avatar } = useSelector((state) => state.activate);
   const [image, setImage] = useState("/images/default-profile-icon.png");
   const [loading, setLoading] = useState(false);
+  // const [unmounted, setUnmounted] = useState(false);
   function captureImage(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -28,6 +30,9 @@ const StepProfileAvatar = ({ onNext }) => {
     try {
       const { data } = await activate({ name, avatar });
       if (data.auth) {
+        // if (!unmounted) {
+        //   dispatch(setAuth(data));
+        // }
         dispatch(setAuth(data));
       }
     } catch (err) {
@@ -36,6 +41,12 @@ const StepProfileAvatar = ({ onNext }) => {
       setLoading(false);
     }
   }
+
+  // useEffect(() => {
+  //   return () => {
+  //     setUnmounted(true);
+  //   };
+  // }, []);
 
   if (loading) return <Loader message="Activation in Progress..." />;
 
