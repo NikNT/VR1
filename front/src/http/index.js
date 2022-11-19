@@ -37,7 +37,27 @@ export const activate = (data) =>
       return res;
     });
 
-export const logout = () => axios.post("http://localhost:5500/api/logout");
+export const logout = (data) =>
+  axios
+    .post("http://localhost:5500/api/logout", data, {
+      withCredentials: true,
+    })
+    .then((res) => {
+      return res;
+    });
+
+export const createRoom = (data) =>
+  axios
+    .post("http://localhost:5500/api/rooms", data, {
+      withCredentials: true,
+    })
+    .then((res) => {
+      return res;
+    });
+
+// export const getAllRooms = () => axios.get("http://localhost:5500/api/rooms");
+
+export const getAllRooms = () => api.get("/api/rooms");
 
 //Interceptors
 

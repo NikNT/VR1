@@ -8,6 +8,7 @@ import Rooms from "./webpages/Rooms/Rooms";
 import { useSelector } from "react-redux";
 import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh";
 import Loader from "./components/shared/Loader/Loader";
+import Room from "./webpages/Room/Room";
 
 function App() {
   const { loading } = useLoadingWithRefresh();
@@ -46,6 +47,14 @@ function App() {
           element={
             <Protected>
               <Rooms />
+            </Protected>
+          }
+        />
+        <Route
+          path="/room/:id"
+          element={
+            <Protected>
+              <Room />
             </Protected>
           }
         />

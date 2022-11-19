@@ -4,6 +4,7 @@ import { logout } from "../../../http";
 import styles from "./Navigation.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../../store/authSlice";
+// import { setAvatar } from "../../../store/activateSlice";
 
 const Navigation = () => {
   const navStyle = {
@@ -27,6 +28,7 @@ const Navigation = () => {
 
   const dispatch = useDispatch();
   const { isAuth, user } = useSelector((state) => state.auth);
+  const { avatar } = useSelector((state) => state.activate);
 
   async function logoutUser() {
     try {
@@ -44,15 +46,19 @@ const Navigation = () => {
         <span style={logoText}>VR1</span>
       </Link>
       <div className={styles.navRight}>
-        <h3> {user.name} </h3>
+        {isAuth && <h3>{user.name}</h3>}
         <Link to="/">
-          <img
-            className={styles.avatar}
-            src={user.avatar}
-            width="40"
-            height="40"
-            alt="User Profile Icon"
-          />
+          {isAuth && avatar && (
+            <img
+              className={styles.avatar}
+              src={
+                user.avatar ? user.avatar : "/images/default-profile-icon.png"
+              }
+              width="40"
+              height="40"
+              alt="User Profile Icon"
+            />
+          )}
         </Link>
         {isAuth && (
           <button className={styles.logoutButton} onClick={logoutUser}>

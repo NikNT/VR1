@@ -61,3 +61,11 @@
   height: 21px;
   width: 21px;
 }
+
+.singleSpeaker .avatars img {
+  position: initial;
+}
+
+.singleSpeaker .names {
+  margin-left: 60px;
+}
