@@ -58,6 +58,7 @@ export const createRoom = (data) =>
 // export const getAllRooms = () => axios.get("http://localhost:5500/api/rooms");
 
 export const getAllRooms = () => api.get("/api/rooms");
+export const getRoom = (roomId) => api.get(`/api/rooms/${roomId}`);
 
 //Interceptors
 
