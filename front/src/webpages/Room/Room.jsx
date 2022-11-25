@@ -8,9 +8,14 @@ import { getRoom } from "../../http";
 const Room = () => {
   const { id: roomId } = useParams();
   const user = useSelector((state) => state.auth.user);
-  const { clients, provideRef } = useWebRTC(roomId, user);
+  const { clients, provideRef, handleMute } = useWebRTC(roomId, user);
   const history = useNavigate();
   const [room, setRoom] = useState(null);
+  const [isMute, setMute] = useState(true);
+
+  useEffect(() => {
+    handleMute(isMute, user.id);
+  }, [isMute]);
 
   const handleManualLeave = () => {
     history("/rooms");
@@ -25,6 +30,20 @@ const Room = () => {
 
     fetchRoom();
   }, [roomId]);
+
+  const handleMuteClick = (clientId) => {
+    console.log("Click", clientId);
+    if (clientId !== user.id) return;
+    setMute((prev) => !prev);
+  };
+
+  // const [numberOfClients, setNumberOfClients] = useState(clients);
+
+  // useEffect(() => {
+  //   setNumberOfClients(() => {
+  //     return [...new Set(clients)];
+  //   });
+  // }, [clients]);
 
   return (
     <div>
@@ -48,7 +67,7 @@ const Room = () => {
           {clients.map((client) => {
             return (
               <div className={styles.client} key={client.id}>
-                <div className={styles.userHead}>
+                <div className={styles.userHead} key={client.id}>
                   <audio
                     ref={(instance) => provideRef(instance, client.id)}
                     // controls
@@ -60,9 +79,15 @@ const Room = () => {
                     src="/images/default-profile-icon.png"
                     alt="Client Avatar"
                   />
-                  <button className={styles.micBtn}>
-                    {/* <img src="/images/mic.png" alt="mic-icon" /> */}
-                    <img src="/images/mic-mute.png" alt="mic-mute-icon" />
+                  <button
+                    onClick={() => handleMuteClick(client.id)}
+                    className={styles.micBtn}
+                  >
+                    {client.muted ? (
+                      <img src="/images/mic-mute.png" alt="mic-mute-icon" />
+                    ) : (
+                      <img src="/images/mic.png" alt="mic-icon" />
+                    )}
                   </button>
                   <h4>{client.name}</h4>
                 </div>

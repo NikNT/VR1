@@ -125,7 +125,7 @@ const Rooms = () => {
           {rooms.map((room) => (
             <>
               <RoomCard key={room.id} room={room} />
-              <RoomCard key={room.id} room={room} />
+              {/* <RoomCard key={room.id} room={room} /> */}
             </>
           ))}
         </div>
