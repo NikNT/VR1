@@ -15,10 +15,12 @@ const Home = () => {
     <div className={styles.cardWrapper}>
       <Card title="Welcome to VR1!" icon="logo">
         <p className={styles.infoText}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-          possimus animi, sed, iure iste nihil quas aperiam nesciunt eveniet,
-          sunt tenetur? Voluptatum consectetur minima velit aliquam animi
-          aliquid excepturi accusantium.
+        VR1 - Minimalistic and Aesthetic Drop-in Audio Chat Platform 🎙️
+          <br />
+          <br />
+
+          By leveraging WebRTC Protocols, VR1 implements a Peer-to-Peer Connection to allow different end users to join specific rooms and audio chat with efficacy! 
+          
         </p>
         <div>
           <Button onClick={startRegister} text="Let's Begin 🙂" />

@@ -11,6 +11,8 @@ const userSchema = new Schema(
       get: (avatar) => {
         if (avatar) {
           return `${process.env.BASE_URL}${avatar}`;
+          // return `${avatar}`;
+
         }
         return avatar;
       },

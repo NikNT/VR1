@@ -28,7 +28,7 @@ const Navigation = () => {
 
   const dispatch = useDispatch();
   const { isAuth, user } = useSelector((state) => state.auth);
-  const { avatar } = useSelector((state) => state.activate);
+  // const { avatar } = useSelector((state) => state.activate);
 
   async function logoutUser() {
     try {
@@ -48,7 +48,7 @@ const Navigation = () => {
       <div className={styles.navRight}>
         {isAuth && <h3>{user.name}</h3>}
         <Link to="/">
-          {isAuth && avatar && (
+          {isAuth && (
             <img
               className={styles.avatar}
               src={
